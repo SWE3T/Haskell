@@ -109,3 +109,42 @@ quatro = Suc (tres)
 
 cinco :: Nat
 cinco = Suc (quatro)
+
+nat2int :: Nat -> Integer
+nat2int Zero = 0 
+nat2int (Suc n) = 1 + nat2int(n)
+
+int2nat :: Integer -> Nat
+int2nat 0 = Zero 
+int2nat n = Suc (int2nat(n - 1))
+
+
+-- Exemplo de Função Recursiva 
+fatorial :: Integer -> Integer
+fatorial n = if n == 0  
+            then 1                      --caso base
+            else fatorial (n - 1) * n   --recursividade
+
+
+
+-- Mede o tamanho da lista 
+comprimento :: [Int] -> Int 
+comprimento list = if null list
+                  then 0
+                  else 1 + comprimento (tail list)
+
+-- Outra forma de escrever uma função recursiva, desta vez com pattern matching 
+soma :: [Int] -> Int 
+soma [ ] = 0 
+soma (x : xs) = x + soma(xs)
+            
+
+-- Exemplo de Função Recursiva, com Fibonacci  
+fibonacci :: Integer -> Integer
+fibonacci 0 = 0  
+fibonacci 1 = 1
+fibonacci 2 = 1  
+fibonacci 29 = 515229
+fibonacci 30 = 833040 -- checkpoints, ajuda a aumentar o desempenho!
+fibonacci n = fibonacci(n - 2) + fibonacci(n - 1)   --recursividade
+
