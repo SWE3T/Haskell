@@ -43,7 +43,7 @@ junta a b = a ++ b
 inputString = do
     putStr "Escreva seu nome: "
     s <- getLine
-    putStrLn(">>~S2~"++s++"~~>")
+    putStrLn(">>~S2~"++s++"~S2~>")
 
 
 -- Datas (Algebraic Data Types (ADTs))
@@ -117,6 +117,27 @@ nat2int (Suc n) = 1 + nat2int(n)
 int2nat :: Integer -> Nat
 int2nat 0 = Zero 
 int2nat n = Suc (int2nat(n - 1))
+
+natAdd :: Nat -> Nat -> Nat
+natAdd Zero Zero = Zero
+natAdd (Suc n) Zero = Suc n
+natAdd Zero (Suc n) = Suc n
+natAdd (Suc n) (Suc m) = Suc(Suc(natAdd n m))
+ 
+natSub :: Nat -> Nat -> Nat
+natSub Zero Zero = Zero
+natSub (Suc n) Zero = Suc n
+natSub (Suc n) (Suc m) = natSub n m 
+ 
+natMul :: Nat -> Nat -> Nat
+natMul _ Zero = Zero
+natMul Zero _ = Zero
+-- natMul Suc(Zero) Suc n = Suc n
+-- natMul Suc n Suc(Zero) = Suc n
+natMul (Suc m) (Suc n) = natAdd (Suc m) (natMul (Suc m) n)
+                            -- n + mul n m - 1
+
+
 
 
 -- Exemplo de Função Recursiva 
