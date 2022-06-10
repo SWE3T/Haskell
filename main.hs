@@ -144,7 +144,14 @@ fibonacci :: Integer -> Integer
 fibonacci 0 = 0  
 fibonacci 1 = 1
 fibonacci 2 = 1  
-fibonacci 29 = 515229
+fibonacci 20 = 6765
 fibonacci 30 = 833040 -- checkpoints, ajuda a aumentar o desempenho!
+fibonacci 40 = 102478155 -- checkpoints, ajuda a aumentar o desempenho!
+fibonacci 50 = 12603980025 -- checkpoints, ajuda a aumentar o desempenho!
 fibonacci n = fibonacci(n - 2) + fibonacci(n - 1)   --recursividade
 
+-- Função de alta ordem (recebe uma função como parametro); 
+greeting f []  = []
+greeting f lst =  map f lst
+-- greeting (\x -> "Bem vindo(a), " ++ x) ["Josias", "Maria"]
+--          |     Expressão Lambda      | |     lst      |
