@@ -176,3 +176,17 @@ greeting f []  = []
 greeting f lst =  map f lst
 -- greeting (\x -> "Bem vindo(a), " ++ x) ["Josias", "Maria"]
 --          |     Expressão Lambda      | |     lst      |
+
+-- Lista de exercícios
+salario x = x * 1.1 - 0.07 * x
+
+tria x y z | x + y > z = "Pode"
+           | x + z > y = "Pode"
+           | z + y > x = "Pode"
+           | otherwise = "Incapaz" 
+
+media x y z | x * 0.2 + y * 0.3 + z * 0.5 > 8 = "A"
+            | x * 0.2 + y * 0.3 + z * 0.5 > 7 = "B"     
+            | x * 0.2 + y * 0.3 + z * 0.5 > 6 = "C"     
+            | x * 0.2 + y * 0.3 + z * 0.5 > 5 = "D"     
+            | otherwise = "E"     
