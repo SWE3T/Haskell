@@ -204,3 +204,16 @@ fatorialDuplo :: Integer -> Integer
 fatorialDuplo 1 = 1
 fatorialDuplo 2 = 2
 fatorialDuplo x = x * fatorialDuplo (x - 2)
+
+contaEle lst = foldl (+) 0 (map (\_-> 1) lst)
+
+calcList [] = 0
+calcList [x] = x
+calcList (x:xs) = x + head xs
+
+both True True = True
+both _ _ = False
+
+anyone True _ = True
+anyone _ True = True
+anyone _ _  = False
