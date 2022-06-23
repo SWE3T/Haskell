@@ -190,3 +190,17 @@ media x y z | x * 0.2 + y * 0.3 + z * 0.5 > 8 = "A"
             | x * 0.2 + y * 0.3 + z * 0.5 > 6 = "C"     
             | x * 0.2 + y * 0.3 + z * 0.5 > 5 = "D"     
             | otherwise = "E"     
+
+--imc :: String -> Float -> String
+imc s h | s == "mas" = (72.7 * h + (-58))
+        | s == "fem" = (62.1 * h + (-44.7))
+
+
+eleitor i | i < 16 = "Não eleitor" 
+          | i > 17 && i < 65 = "Obrigado"
+          | i >= 16 || i > 65 = "Facultativo"
+
+fatorialDuplo :: Integer -> Integer 
+fatorialDuplo 1 = 1
+fatorialDuplo 2 = 2
+fatorialDuplo x = x * fatorialDuplo (x - 2)
