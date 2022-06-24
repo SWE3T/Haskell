@@ -217,3 +217,11 @@ both _ _ = False
 anyone True _ = True
 anyone _ True = True
 anyone _ _  = False
+
+data Produto = Perecivel Int String Int Bool
+             | NaoPerecivel Int String String Int 
+            deriving Show
+
+naValidade :: Perecivel -> Bool 
+naValidade (Perecivel _ _ val _) ano = ano <= val True 
+naValidade NaoPerecivel _ _ = True
