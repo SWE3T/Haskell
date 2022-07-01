@@ -1,3 +1,5 @@
+--Implementação de números naturais utilizando construtores
+
 data Nat = Zero | Suc Nat 
         deriving Show    
 
