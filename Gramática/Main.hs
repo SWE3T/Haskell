@@ -1,5 +1,13 @@
 module Main where
-import Lexer
-import Parser
 
-main = getContents >>= print . parser . lexer
+import Lexer
+
+-- import Parser
+
+import Interpreter
+
+import TypeChecker
+
+
+-- main = getContents >>= print . eval . typecheck . lexer
+main = print "Foi"
