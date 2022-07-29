@@ -2,12 +2,13 @@ module Main where
 
 import Lexer
 
--- import Parser
+import Parser
 
-import Interpreter
+--import Interpreter
 
-import TypeChecker
+--import TypeChecker
 
 
--- main = getContents >>= print . eval . typecheck . lexer
-main = print "Foi"
+main = getContents >>= print . parser . lexer
+--main = print "Foi"
+-- lexer -> Parser -> Type -> Eval
