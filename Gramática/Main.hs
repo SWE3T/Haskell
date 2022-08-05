@@ -4,9 +4,10 @@ import Lexer
 
 import Parser
 
---import Interpreter
+-- import TypeChecker
 
---import TypeChecker
+import Interpreter
+
 
 
 main = getContents >>= print . parser . lexer

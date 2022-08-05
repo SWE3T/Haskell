@@ -54,11 +54,11 @@ step (Add (Num n1) e2) = case (step e2) of
 step (Add e1 e2)       = case (step e1) of
                         Just el' -> Just (Add e1' e2)
                         Nothing  -> Nothing
-step (And BTrue e2) = Just e2
-step (And BFalse _) = Just BFalse
-step (And e1 e2)    = case (step e1) of
-                    Just e1' -> Just (And e1' e2)
-                    Nothing  -> Nothing
+step (And BTrue e2)    = Just e2
+step (And BFalse _)    = Just BFalse
+step (And e1 e2)       = case (step e1) of
+                       Just e1' -> Just (And e1' e2)
+                       Nothing  -> Nothing
 
 
 typeof :: Expr -> Maybe Ty 

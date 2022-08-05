@@ -29,3 +29,32 @@ typecheck :: Expr -> Expr
 typecheck exp = case (typeof [] exp) of 
     Just _     -> exp
     _          -> error "Erro na verificação de tipos!" 
+
+
+    -- step :: Expr -> Maybe Expr
+
+
+-- step (Add (Num n1) (Num n2)) = Just (Num (n1 + n2))
+-- step (Add (Num n1) e2) = case (step e2) of 
+--                         Just e2' -> Just (Add (Num n1) e2')
+--                         Nothing  -> Nothing
+-- step (Add e1 e2)       = case (step e1) of
+--                         Just e1' -> Just (Add e1' e2)
+--                         Nothing  -> Nothing
+-- step (And BTrue e2)    = Just e2
+-- step (And BFalse _)    = Just BFalse
+-- step (And e1 e2)       = case (step e1) of
+--                        Just e1' -> Just (And e1' e2)
+--                        Nothing  -> Nothing
+ 
+
+-- eval :: Expr -> Expr 
+-- eval e | is_value e = e
+--        | otherwise  = eval (step e)
+
+
+is_value :: Expr -> Bool
+is_value BFalse = False
+is_value BTrue = True
+is_value (Lam _ _ _) = True
+is_value _ = False
