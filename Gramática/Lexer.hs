@@ -13,11 +13,8 @@ data Expr  = Var String
            | BFalse
            | Add Expr Expr
            | Times Expr Expr
-           | Record String Expr 
+           | Record [(String, Expr)] 
            deriving Show
-
--- data Record = (Expr Expr)
---            deriving Show
 
 data Ty    = TBool
            | TNum
@@ -44,11 +41,12 @@ data Token = TokenNum Int
 -- Função que recebe o código e retorna uma lista de Tokens 
 lexer :: String -> [Token]
 lexer [] = []
-lexer ('+':cs) = TokenPlus  : lexer cs
-lexer ('*':cs) = TokenTimes : lexer cs
-lexer ('|':cs) = TokenOr    : lexer cs
-lexer ('&':cs) = TokenAnd   : lexer cs
+lexer ('+':cs) = TokenPlus       : lexer cs
+lexer ('*':cs) = TokenTimes      : lexer cs
+lexer ('|':cs) = TokenOr         : lexer cs
+lexer ('&':cs) = TokenAnd        : lexer cs
 lexer ('=':cs) = TokenAssign     : lexer cs
+lexer (',':cs) = TokenComma      : lexer cs
 lexer ('{':cs) = TokenLBracket   : lexer cs
 lexer ('}':cs) = TokenRBracket   : lexer cs
 lexer (c:cs) 
@@ -58,15 +56,15 @@ lexer (c:cs)
 lexer _ = error "Erro Léxico: caractere inválido"
 
 lexReserved cs = case span isAlpha cs of
-                   ("let", rest) -> TokenLet : lexer rest
-                   ("in", rest)  -> TokenIn  : lexer rest
-                   ("true", rest)  -> TokenBTrue  : lexer rest
+                   ("let", rest)    -> TokenLet     : lexer rest
+                   ("in", rest)     -> TokenIn      : lexer rest
+                   ("true", rest)   -> TokenBTrue   : lexer rest
                    ("false", rest)  -> TokenBFalse  : lexer rest
-                   (var, rest)    -> TokenVar var : lexer rest
+                   (var, rest)      -> TokenVar var : lexer rest
                    --_ -> error "Erro Léxico: nenhum correspondente para isso."             
 
 lexNum cs = case span isDigit cs of 
-                (num, rest) -> TokenNum (read num) : lexer rest
+                   (num, rest) -> TokenNum (read num) : lexer rest
 
 
 -- step :: Expr -> Maybe Expr

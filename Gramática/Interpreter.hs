@@ -31,6 +31,10 @@ step (And BFalse _ ) = BFalse
 step (And BTrue e2 ) = e2
 step (And e1 e2 ) = And (step e1) e2
 
+step (Or BTrue _ ) = BTrue
+step (Or BFalse e2 ) = e2
+step (Or e1 e2 ) = Or (step e1) e2
+
 
 
 step e = e 
