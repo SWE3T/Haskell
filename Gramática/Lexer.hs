@@ -3,16 +3,16 @@ module Lexer where
 import Data.Char
 
 data Expr  = Var String
-           | Lam String Ty Expr
-           | App Expr Expr 
-           | And Expr Expr 
-           | Let String Expr Expr
-           | Or Expr Expr  
            | Num Int
+           | Lam String Ty Expr
            | BTrue 
            | BFalse
+           | Or Expr Expr  
+           | And Expr Expr 
            | Add Expr Expr
            | Times Expr Expr
+           | App Expr Expr 
+           | Let String Expr Expr
            | Record [(String, Expr)] 
            deriving Show
 
@@ -26,10 +26,10 @@ data Token = TokenNum Int
            | TokenVar String
            | TokenBTrue 
            | TokenBFalse 
-           | TokenPlus
-           | TokenTimes
            | TokenAnd
            | TokenOr
+           | TokenPlus
+           | TokenTimes
            | TokenLBracket
            | TokenAssign
            | TokenComma

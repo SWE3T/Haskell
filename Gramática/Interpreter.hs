@@ -35,17 +35,19 @@ step (Or BTrue _ ) = BTrue
 step (Or BFalse e2 ) = e2
 step (Or e1 e2 ) = Or (step e1) e2
 
+-- Let String Expr Expr
+-- let x=1 in x+2
+step (Let v e1 e2) | is_value e1 = subst v e1 e2
+                   | otherwise = Let v (step e1) e2
+
+step (Record list) | is_value list = lookup 1 list --TODO: Preciso completar essa parte
+                   | otherwise = head snd list
+
+step (Record (x:xs)) | is_value snd head x = snd head x
+                    --  | otherwise       = tail X
 
 
 step e = e 
-
--- both True True = True
--- both _ _ = False
-
--- anyone True _ = True
--- anyone _ True = True
--- anyone _ _  = False
-
 
 
 eval :: Expr -> Expr 

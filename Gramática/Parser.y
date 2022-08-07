@@ -37,6 +37,7 @@ Exp : num                    { Num $1 }
     | false                  { BFalse }
     | Exp '+' Exp            { Add $1 $3 }
     | Exp '*' Exp            { Times $1 $3 }
+    | if Exp Exp Exp         { If $1 $3 }
     | Exp '&' Exp            { And $1 $3 }
     | Exp '|' Exp            { Or $1 $3 }
     | let var '=' Exp in Exp { Let $2 $4 $6}
