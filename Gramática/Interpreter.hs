@@ -49,8 +49,8 @@ step (Let v e1 e2) | is_value e1 = subst v e1 e2
 --                      | otherwise       = snd x
 
 step (AcessRecord (Record list) v) = let val = lookup v list --TODO: Preciso converter esse 'v' para uma string; no momento ele é 'Expr'
-                                   in case val of 
-                                      Just x  -> BTrue 
+                                   in case val of  
+                                      Just x  -> x 
                                       Nothing -> error "ERRO: Não existe este elemento nos Records" 
 
 

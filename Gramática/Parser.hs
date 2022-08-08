@@ -15,7 +15,7 @@ data HappyAbsSyn t4 t5
 	| HappyAbsSyn5 t5
 
 happyExpList :: Happy_Data_Array.Array Int Int
-happyExpList = Happy_Data_Array.listArray (0,71) ([8672,1028,0,0,3840,1,0,0,0,512,16384,0,2048,0,4,32,16926,17344,30728,264,8463,8672,4,0,0,0,0,0,8,2168,1,57344,1057,17344,30721,8202,0,16926,0,0,0,0
+happyExpList = Happy_Data_Array.listArray (0,71) ([8672,1028,0,0,3840,1,0,0,0,512,16384,0,2048,0,4,32,16926,17344,30728,264,8463,64,0,0,0,0,0,0,8,2168,1,57344,1057,17344,30721,8202,0,16926,0,0,0,0
 	])
 
 {-# NOINLINE happyExpListPerState #-}
@@ -111,20 +111,9 @@ action_15 (19) = happyShift action_8
 action_15 (4) = happyGoto action_18
 action_15 _ = happyFail (happyExpListPerState 15)
 
-action_16 (6) = happyShift action_2
-action_16 (7) = happyShift action_4
-action_16 (8) = happyShift action_5
-action_16 (9) = happyShift action_6
-action_16 (14) = happyShift action_7
-action_16 (19) = happyShift action_8
-action_16 (4) = happyGoto action_17
+action_16 (7) = happyShift action_17
 action_16 _ = happyFail (happyExpListPerState 16)
 
-action_17 (10) = happyShift action_12
-action_17 (11) = happyShift action_13
-action_17 (12) = happyShift action_14
-action_17 (13) = happyShift action_15
-action_17 (18) = happyShift action_16
 action_17 _ = happyReduce_11
 
 action_18 (10) = happyShift action_12
@@ -294,7 +283,7 @@ happyReduction_10 _
 happyReduction_10 _ _ _  = notHappyAtAll 
 
 happyReduce_11 = happySpecReduce_3  4 happyReduction_11
-happyReduction_11 (HappyAbsSyn4  happy_var_3)
+happyReduction_11 (HappyTerminal (TokenVar happy_var_3))
 	_
 	(HappyAbsSyn4  happy_var_1)
 	 =  HappyAbsSyn4

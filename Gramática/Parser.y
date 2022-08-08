@@ -42,7 +42,7 @@ Exp : num                    { Num $1 }
     | Exp '|' Exp            { Or $1 $3 }
     | let var '=' Exp in Exp { Let $2 $4 $6}
     | '{' RecordList '}'     { Record $2 }
-    | Exp'.'Exp              { AcessRecord $1 $3 }
+    | Exp'.'var              { AcessRecord $1 $3 }
 
 RecordList : var '=' Exp                 { [($1, $3)] }
            | var '=' Exp ',' RecordList  { (($1, $3) : $5) }

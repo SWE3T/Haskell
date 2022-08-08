@@ -14,7 +14,7 @@ data Expr  = Var String
            | App Expr Expr 
            | Let String Expr Expr
            | Record [(String, Expr)] 
-           | AcessRecord Expr Expr 
+           | AcessRecord Expr String 
            deriving Show
 
 -- data Record = String Expr
