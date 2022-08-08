@@ -14,7 +14,12 @@ data Expr  = Var String
            | App Expr Expr 
            | Let String Expr Expr
            | Record [(String, Expr)] 
+           | AcessRecord Expr Expr 
            deriving Show
+
+-- data Record = String Expr
+--             deriving Show
+
 
 data Ty    = TBool
            | TNum
@@ -36,6 +41,7 @@ data Token = TokenNum Int
            | TokenRBracket
            | TokenLet
            | TokenIn
+           | TokenDot
            deriving Show 
 
 -- Função que recebe o código e retorna uma lista de Tokens 
@@ -49,6 +55,7 @@ lexer ('=':cs) = TokenAssign     : lexer cs
 lexer (',':cs) = TokenComma      : lexer cs
 lexer ('{':cs) = TokenLBracket   : lexer cs
 lexer ('}':cs) = TokenRBracket   : lexer cs
+lexer ('.':cs) = TokenDot        : lexer cs
 lexer (c:cs) 
     | isSpace c = lexer cs
     | isDigit c = lexNum (c:cs)
