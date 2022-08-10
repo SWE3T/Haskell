@@ -2,6 +2,7 @@ module Lexer where
 
 import Data.Char
 
+--Expressões da gramática
 data Expr  = Var String
            | Num Int
            | Lam String Ty Expr
@@ -17,16 +18,14 @@ data Expr  = Var String
            | AcessRecord Expr String 
            deriving Show
 
--- data Record = String Expr
---             deriving Show
-
-
+--Tipos da gramática
 data Ty    = TBool
            | TNum
            | TVar
            | TFun Ty Ty
            deriving (Show, Eq)
 
+--Tokens da Gramática
 data Token = TokenNum Int 
            | TokenVar String
            | TokenBTrue 
@@ -92,15 +91,6 @@ lexNum cs = case span isDigit cs of
 -- eval :: Expr -> Expr 
 -- eval e | is_value e = e
 --        | otherwise  = eval (step e)
-
-
--- is_value :: Expr -> Bool
--- is_value BFalse = False
--- is_value BTrue = True
--- is_value (Lam _ _ _) = True
--- is_value _ = False
-
-
 
 
 
