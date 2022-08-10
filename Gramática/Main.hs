@@ -9,7 +9,6 @@ import Parser
 import Interpreter
 
 
-
-main = getContents >>= print . parser . lexer
+main = getContents >>= print . eval . parser . lexer
 --main = print "Foi"
 -- lexer -> Parser -> Type -> Eval
