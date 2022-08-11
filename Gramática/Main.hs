@@ -4,7 +4,7 @@ import Lexer
 
 import Parser
 
--- import TypeChecker
+import TypeChecker
 
 import Interpreter
 
