@@ -13,6 +13,7 @@ import Lexer
     true   { TokenBTrue }
     false  { TokenBFalse }
     '+'    { TokenPlus }
+    '-'    { TokenMinus }
     '*'    { TokenTimes }
     '&'    { TokenAnd }
     '|'    { TokenOr }
@@ -27,6 +28,7 @@ import Lexer
 
 %nonassoc if then else
 %left '+'
+%left '-'
 %left '*' 
 
 %%
@@ -37,6 +39,7 @@ Exp : num                    { Num $1 }
     | true                   { BTrue }
     | false                  { BFalse }
     | Exp '+' Exp            { Add $1 $3 }
+    | Exp '-' Exp            { Minus $1 $3 }
     | Exp '*' Exp            { Times $1 $3 }
     | Exp '&' Exp            { And $1 $3 }
     | Exp '|' Exp            { Or $1 $3 }
