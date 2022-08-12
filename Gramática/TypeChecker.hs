@@ -25,23 +25,33 @@ typeof ctx (App e1 e2)  = case (typeof ctx e1, typeof ctx e2) of
                 Nothing  
           _ -> Nothing
 
-typeof ctx (Add e1 e2)   = case (typeof ctx e1, typeof ctx e2) of 
+typeof ctx (Add e1 e2)     = case (typeof ctx e1, typeof ctx e2) of 
             (Just TNum, Just TNum)   -> Just TNum
             _                        -> Nothing
-typeof ctx (Minus e1 e2) = case (typeof ctx e1, typeof ctx e2) of 
+typeof ctx (Minus e1 e2)   = case (typeof ctx e1, typeof ctx e2) of 
             (Just TNum, Just TNum)   -> Just TNum
             _                        -> Nothing
-typeof ctx (Times e1 e2) = case (typeof ctx e1, typeof ctx e2) of 
+typeof ctx (Times e1 e2)   = case (typeof ctx e1, typeof ctx e2) of 
             (Just TNum, Just TNum)   -> Just TNum
             _                        -> Nothing
-typeof ctx (Or e1 e2)    = case (typeof ctx e1, typeof ctx e2) of 
+typeof ctx (Greater e1 e2) = case (typeof ctx e1, typeof ctx e2) of 
+            (Just TNum, Just TNum)   -> Just TNum
+            _                        -> Nothing
+typeof ctx (Smaller e1 e2) = case (typeof ctx e1, typeof ctx e2) of 
+            (Just TNum, Just TNum)   -> Just TNum
+            _                        -> Nothing
+typeof ctx (Equal e1 e2) = case   (typeof ctx e1, typeof ctx e2) of 
+            (Just TNum, Just TNum)   -> Just TNum
+            _                        -> Nothing
+typeof ctx (Different e1 e2) = case   (typeof ctx e1, typeof ctx e2) of 
+            (Just TNum, Just TNum)   -> Just TNum
+            _                        -> Nothing
+typeof ctx (Or e1 e2)      = case (typeof ctx e1, typeof ctx e2) of 
             (Just TBool, Just TBool) -> Just TBool
             _                        -> Nothing
-typeof ctx (And e1 e2)   = case (typeof ctx e1, typeof ctx e2) of 
+typeof ctx (And e1 e2)     = case (typeof ctx e1, typeof ctx e2) of 
             (Just TBool, Just TBool) -> Just TBool
             _                        -> Nothing
-
-
 
 typeof ctx (Let x e1 e2) = let Just e    = typeof ctx e1
             in typeof ((x, e):ctx) e2

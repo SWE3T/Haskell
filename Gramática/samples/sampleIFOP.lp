@@ -1,0 +1,1 @@
+(2 different 3) | (1 equal 2)? true : false 

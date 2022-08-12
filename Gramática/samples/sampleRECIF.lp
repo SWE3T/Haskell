@@ -1,0 +1,1 @@
+let numeros = {um = 1, dois = 2, tres = 3, quatro = 4, cinco = 5} in (3 > 2)? numeros.cinco : numeros.dois
