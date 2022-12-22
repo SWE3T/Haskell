@@ -1,2 +1,2 @@
 ## Matéria de Linguagens de Programação 
-> Aprendendendo Noções básicas de haskell
+> Repositório com o interpretador implementado em haskell
